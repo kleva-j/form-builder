@@ -8,7 +8,7 @@ CREATE TABLE "Form" (
     "description" TEXT NOT NULL DEFAULT '',
     "content" TEXT NOT NULL DEFAULT '[]',
     "visits" INTEGER NOT NULL DEFAULT 0,
-    "submission" INTEGER NOT NULL DEFAULT 0,
+    "submissions" INTEGER NOT NULL DEFAULT 0,
     "shareUrl" TEXT NOT NULL,
 
     CONSTRAINT "Form_pkey" PRIMARY KEY ("id")
