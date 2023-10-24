@@ -6,5 +6,12 @@ export class UserNotFoundError extends NotFoundError {}
 export class UserNotAuthorizedError extends NotAuthorizedError {}
 
 // Form Errors
-export class FormNotFoundError extends Error {}
-export class FormSubmissionError extends Error {}
+export class FormNotFoundError extends NotFoundError {
+  message = "Form not found";
+}
+export class FormNotValidError extends Error {
+  message = "Form not valid";
+}
+export class FormSubmissionError extends Error {
+  message = "Something went wrong";
+}
