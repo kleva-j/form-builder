@@ -4,7 +4,9 @@
   "private": true,
   "scripts": {
     "dev": "next dev --experimental-https",
-    "build": "next build",
+    "build": "pnpm build:prod && next build",
+    "build:prod": "pnpm migrate:prod && pnpm db:generate && pnpm db:push",
+    "migrate:prod": "prisma migrate deploy",
     "start": "next start",
     "lint": "next lint",
     "db:format": "prisma format",
