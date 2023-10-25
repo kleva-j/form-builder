@@ -15,3 +15,7 @@ export class FormNotValidError extends Error {
 export class FormSubmissionError extends Error {
   message = "Something went wrong";
 }
+
+export class InvalidFormIdError extends Error {
+  message: string = "Form ID is not valid!";
+}

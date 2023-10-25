@@ -13,7 +13,7 @@ export default function Layout({ children }: PropsWithChildren) {
           <UserButton afterSignOutUrl="/sign-in" />
         </div>
       </nav>
-      <main className="flex w-full flex-grow">{children}</main>
+      <main className="flex w-full flex-grow flex-1">{children}</main>
     </div>
   );
 }

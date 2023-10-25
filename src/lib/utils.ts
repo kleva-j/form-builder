@@ -14,3 +14,6 @@ export function generateFormField(num: number = 1) {
     content: faker.lorem.sentence(),
   }));
 }
+
+export const generateRandomId = () =>
+  Math.floor(Math.random() * 10001).toString();
