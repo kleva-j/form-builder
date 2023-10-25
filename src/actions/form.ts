@@ -2,9 +2,11 @@
 
 import { CreateFormSchema, CreateFormSchemaType } from "@/lib/schema";
 import { currentUser } from "@clerk/nextjs";
+import { Form } from "@prisma/client";
 import {
   FormSubmissionError,
   FormNotValidError,
+  FormNotFoundError,
   UserNotFoundError,
 } from "@/lib/errors";
 
@@ -64,7 +66,10 @@ export async function CreateForm(data: CreateFormSchemaType): Promise<number> {
   return form.id;
 }
 
-export async function GetForms() {
+/**
+ * @returns Promise of an Array of forms
+ */
+export async function GetForms(): Promise<Form[]> {
   const user = await currentUser();
 
   if (!user) throw new UserNotFoundError();
@@ -73,4 +78,23 @@ export async function GetForms() {
     where: { userId: user.id },
     orderBy: { createdAt: "desc" },
   });
+}
+
+/**
+ * 
+ * @param id number<FormId>
+ * @returns Promise of a form.
+ */
+export async function GetFormsById(id: number): Promise<Form> {
+  const user = await currentUser();
+
+  if (!user) throw new UserNotFoundError();
+
+  const form = await prisma.form.findUnique({
+    where: { id, userId: user.id },
+  });
+
+  if (!form) throw new FormNotFoundError();
+
+  return form;
 }

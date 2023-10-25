@@ -1,14 +1,8 @@
+import { CardStatsWrapper, StatsCards } from "@/dashboard/StatsCard";
+import { FormCardSkeleton, FormCards } from "@/dashboard/FormCard";
 import { CreateFormBtn } from "@/components/CreateFormBtn";
 import { Separator } from "@/components/ui/separator";
 import { Suspense } from "react";
-import {
-  CardStatsWrapper,
-  StatsCards,
-} from "@/app/(dashboard)/components/StatsCard";
-import {
-  FormCardSkeleton,
-  FormCards,
-} from "@/app/(dashboard)/components/FormCard";
 
 export default function DashboardPage() {
   return (

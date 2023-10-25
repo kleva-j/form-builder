@@ -2,6 +2,7 @@ import "@/app/globals.css";
 
 import type { Metadata } from "next";
 
+import { ConsoleContextProvider } from "@/dashboard/context/ConsoleContext";
 import { ThemeProvider } from "@/components/providers/ThemeProvider";
 import { Inter as FontSans } from "next/font/google";
 import { Toaster } from "@/components/ui/toaster";
@@ -30,16 +31,18 @@ export default function RootLayout({
             fontSans.variable
           )}
         >
-          <ThemeProvider
-            attribute="class"
-            defaultTheme="system"
-            enableSystem
-            disableTransitionOnChange
-          >
-            <AxiomWebVitals />
-            {children}
-            <Toaster />
-          </ThemeProvider>
+          <ConsoleContextProvider>
+            <ThemeProvider
+              attribute="class"
+              defaultTheme="system"
+              enableSystem
+              disableTransitionOnChange
+            >
+              <AxiomWebVitals />
+              {children}
+              <Toaster />
+            </ThemeProvider>
+          </ConsoleContextProvider>
         </body>
       </html>
     </ClerkProvider>
